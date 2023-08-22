@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GradeBookApp</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>GradeBookApp</h1>
+  </header>
+  <main>
+    <h2>Student Management System</h2>
+    <div>
+      <select id="selectAction">
+        <option value="P">Populate Student Information</option>
+        <option value="U">Update Student Information</option>
+        <option value="D">Display Student Information</option>
+        <option value="C">Calculate Grade</option>
+      </select>
+      <button onclick="performAction()">Perform Action</button>
+    </div>
+    <div id="inputArea"></div>
+    <div id="outputArea"></div>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
