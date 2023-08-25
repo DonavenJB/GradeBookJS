@@ -34,17 +34,52 @@ function inputAreaClear() {
   document.getElementById("inputArea").innerHTML = clearHtml;
 }
 
-function updateStudentInfo() {
 
+function updateStudentInfo() {
+  const testTest = 'You are testing update function, its working';
+  document.getElementById("outputArea").innerHTML = testTest;
 }
 
 function showStudentInfo() {
-
+  const testTest = 'You are testing showStudent function, its working';
+  document.getElementById("outputArea").innerHTML = testTest;
 }
-//fix
-function calculateGrade() {
 
+function promptForStudentID() {
+  const getStudentId = `<input type="number" id="getStudentId" placeholder="Please enter student ID number"></input><br /><button onclick="proceedWithSearch()">Search</button>`;
+  document.getElementById("outputArea").innerHTML = getStudentId;
 }
+
+function proceedWithSearch() {
+  const studentId = parseInt(document.getElementById("getStudentId").value);
+  if(searchStudent(studentId)) {
+    calculateGrade(studentId);
+  } else {
+    const studentFoundFalse = 'Student ID is invalid';
+    document.getElementById("outputArea").innerHTML = studentFoundFalse;
+  }
+}
+
+function calculateGrade(studentId) {
+  const studentIndex = student_ids.indexOf(studentId);
+  if(studentIndex !== -1) {
+    const average_score = (test_score1[studentIndex] + test_score2[studentIndex] + test_score3[studentIndex]) / 3;
+    document.getElementById("outputArea").innerHTML = "Average score for student ID " + studentId + " is: " + average_score;
+  } 
+}
+
+function searchStudent(studentId) {
+  for(let i = 0; i < student_ids.length; i++) {
+    
+    if(studentId === student_ids[i]) {
+      const testId = 'student ID: ' + student_ids[i];
+      return true;
+    }
+  }
+  return false;
+}
+
+
 
 function performAction() {
   var selectedOption = document.getElementById("selectAction").value;
@@ -59,7 +94,7 @@ function performAction() {
       showStudentInfo();
       break;
     case 'C':
-      calculateGrade();
+      promptForStudentID();
       break;
     default:
       document.getElementById('outputArea').innerHTML = "Invalid choice. Please try again!";
